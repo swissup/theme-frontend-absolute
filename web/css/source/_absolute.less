@@ -2,6 +2,11 @@
     //
     //  Body
     //  _____________________________________________
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
     body {
         .lib-background-gradient(
             #004b6e,
@@ -37,12 +42,6 @@
         li {
             transition: 200ms background-color linear;
         }
-    }
-}
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
-    .page-wrapper {
-        margin: 0 5px;
     }
 }
 
@@ -273,12 +272,7 @@
         .main {
             .block-title {
                 color: @headings__color;
-                border: 1px solid @color-gray-darken0;
-                border-radius: 3px;
-                padding: 5px;
-                background: #fdfdfd;
-                background: linear-gradient(to bottom,  #fdfdfd 0%,#ffffff 100%);
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#ffffff',GradientType=0 );
+                padding: 5px 0;
                 strong {
                     .lib-font-size(18);
                     font-weight: @font-weight__light;
@@ -287,13 +281,23 @@
             }
         }
         .sidebar {
+            &.sidebar-main {
+                padding-right: 0;
+            }
             .block {
-                padding: 10px;
+                padding: 5px 10px 10px;
                 border: 1px solid @color-gray-darken0;
                 border-radius: 6px;
                 background: #fdfdfd;
                 background: linear-gradient(to bottom,  #fdfdfd 0%,#ffffff 100%);
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#ffffff',GradientType=0 );
+                .title {
+                    strong {
+                        .lib-font-size(18);
+                        font-weight: @font-weight__light;
+                        vertical-align: middle;
+                    }
+                }
             }
             .home-callouts {
                 .callout {
@@ -315,6 +319,7 @@
                 max-width: none;
                 border: 0;
                 border-radius: 0;
+                padding-top: 8px;
 
                 color: @color-white;
                 background: #6194ae;
@@ -354,6 +359,31 @@
                 }
             }
         }
+        .products-grid {
+            .product-item-info {
+                &:hover {
+                    border-radius: @product-item_border-radius @product-item_border-radius 0 0;
+
+                    .product-item-inner {
+                        border-radius: 0 0 @button__border-radius @button__border-radius ;
+                    }
+                }
+                .product-item-actions {
+                    display: flex;
+                    justify-content: space-around;
+                }    
+            }
+        }
+    }
+    .cms-index-index {
+        .widget {
+            .product-item-info {
+                &:hover {
+                    border-bottom-left-radius: @product-item_border-radius;
+                    border-bottom-right-radius: @product-item_border-radius;
+                }
+            }
+        }
     }
 }
 
@@ -379,6 +409,31 @@
         }
     }
 }
+
+//
+// Common slider 
+// _____________________________________________
+
+& when (@media-common = true) {
+    .slick-slider {
+        .slick-arrow {
+            &:before {
+                display: inline-block;
+                transform: scale(.9);
+                transition-timing-function: ease-in;
+                transition-duration: .05s;
+            }
+        }
+        .slick-arrow {
+            &:hover {
+                &:before {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+}
+
 
 //
 // Featured Slider
@@ -407,6 +462,8 @@
         a.product-item-photo {
             &:hover {
                 transform: scale(1.05);
+                transition-timing-function: cubic-bezier(.62,.56,.75,1.53);
+                transition-duration: .2s;
             }
 
         }
@@ -582,6 +639,14 @@
         border-color: @color-gray-darken0;
         &:last-child {
             border-bottom: 0;
+        }
+        .swissup-option-count {
+            padding-right: 0;
+        }
+        .filter-options-content {
+            a {
+                border-radius: 3px;
+            }
         }
     }
 
