@@ -10,7 +10,7 @@
         "template"
     ],
     "type": "magento2-theme",
-    "version": "1.5.1",
+    "version": "1.5.2",
     "license": "OSL-3.0",
     "require": {
         "magento/module-page-builder": "^2.0"
