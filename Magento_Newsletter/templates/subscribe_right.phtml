@@ -1,32 +1,26 @@
 <?php
-/**
- * Copyright © 2015 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
-
-// @codingStandardsIgnoreFile
-
+/** @var \Magento\Framework\Escaper $escaper */
 ?>
 <div class="block newsletter">
-    <div class="title"><strong><?php echo __('Newsletter') ?></strong></div>
+    <div class="title"><strong><?= $escaper->escapeHtml(__('Newsletter')) ?></strong></div>
     <div class="content">
-        <p class="newsletter-subtitle"><?php echo __('Signup for our Newsletter') ?></p>
+        <p class="newsletter-subtitle"><?= $escaper->escapeHtml(__('Signup for our Newsletter')) ?></p>
         <form class="form subscribe"
             novalidate
-            action="<?php /* @escapeNotVerified */ echo $block->getFormActionUrl() ?>"
+            action="<?= $escaper->escapeUrl($block->getFormActionUrl()) ?>"
             method="post"
             data-mage-init='{"validation": {"errorClass": "mage-error"}}'
             id="newsletter-validate-detail">
             <div class="field newsletter">
-                <label class="label" for="newsletter"><span><?php /* @escapeNotVerified */ echo __('Sign Up for Our Newsletter:') ?></span></label>
+                <label class="label" for="newsletter"><span><?= $escaper->escapeHtml(__('Sign Up for Our Newsletter:')) ?></span></label>
                 <div class="control">
                     <input name="email" type="email" id="newsletter"
-                                placeholder="<?php /* @escapeNotVerified */ echo __('Enter email') ?>"
+                                placeholder="<?= $escaper->escapeHtml(__('Enter email')) ?>"
                                 data-validate="{required:true, 'validate-email':true}"/>
                 </div>
             </div>
             <div class="actions">
-                <button class="action subscribe primary" title="<?php /* @escapeNotVerified */ echo __('Subscribe') ?>" type="submit">
+                <button class="action subscribe primary" title="<?= $escaper->escapeHtml(__('Subscribe')) ?>" type="submit">
                     <span></span>
                 </button>
             </div>

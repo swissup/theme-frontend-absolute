@@ -7,7 +7,7 @@
     <div class="block widget">
         <?php if ($title):?>
         <div class="block-title">
-            <strong><?php echo $title; ?></strong>
+            <strong><?= $escaper->escapeHtml($title) ?></strong>
         </div>
         <?php endif; ?>
         <div class="block-content">
@@ -21,8 +21,8 @@
             }'>
                 <div class="swiper-wrapper">
                 <?php foreach ($items as $_item): ?>
-                    <a style="margin-right: 10px" href="<?php echo $block->getProductUrl($_item) ?>" class="swiper-slide product-item-photo">
-                        <?php echo $block->getImage($_item, $image)->toHtml(); ?>
+                    <a style="margin-right: 10px" href="<?= $escaper->escapeUrl($block->getProductUrl($_item)) ?>" class="swiper-slide product-item-photo">
+                        <?= $block->getImage($_item, $image)->toHtml() ?>
                     </a>
                 <?php endforeach ?>
                 </div>
